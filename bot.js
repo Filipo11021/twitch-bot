@@ -40,8 +40,8 @@ client.on('message', (channel, tags, message, self) => {
    const check = /^[a-zA-Z\s\!\_\ś\ó\ż\ł\ć\ą\ę\ń]*$/i.test(userMsg)
 
    const isMod = tags.mod || tags['user-type'] === 'mod'
-   const isBroadcaster = channel.slice(1) === tags.username || isAdmin
    const isAdmin = botAdmin === tags.username
+   const isBroadcaster = channel.slice(1) === tags.username || isAdmin
    const isModUp = isMod || isBroadcaster
    
    const words = userMsg.split(' ')
