@@ -10,7 +10,6 @@ module.exports = (client, channel, words, check, userMsg) => {
       const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()}&units=metric&appid=${process.env.TWITCH_WEATHERAPIKEY}`
       
       fetch(weatherUrl).then(response => response.json()).then(data => {
-         delay = true
          if (data !== undefined) {
 
             let currentIcon = ''

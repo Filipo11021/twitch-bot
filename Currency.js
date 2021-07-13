@@ -3,7 +3,6 @@ const fetch = require('node-fetch');
 module.exports = (client, channel, words, check) => {
    const currencyCommand = '!cena'
    if (check && words[0] === currencyCommand) {
-      console.log('in', delay)
    
       let cy1 = words[1]
       let cy2 = words[2]
@@ -11,7 +10,6 @@ module.exports = (client, channel, words, check) => {
       fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${cy1}/${cy2}.json`)
          .then(response => response.json())
          .then((data) => {
-            delay = true
 
             if (data[cy2] !== undefined) {
                client.say(channel, `${cy1} - ${cy2} | ${Math.round((data[cy2] + Number.EPSILON) * 100) / 100}`)
