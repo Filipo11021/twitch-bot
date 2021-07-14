@@ -37,7 +37,7 @@ client.on('message', (channel, tags, message, self) => {
    if (self) return;
    
    const userMsg = message.toLowerCase()
-   const check = /^[a-zA-Z\s\!\_\ś\ó\ż\ł\ć\ą\ę\ń]*$/i.test(userMsg)
+   const check = /^[a-zA-Z\s\!\_\ś\ó\ż\ł\ć\ą\ę\ń\/]*$/i.test(userMsg)
 
    const isMod = tags.mod || tags['user-type'] === 'mod'
    const isAdmin = botAdmin === tags.username
