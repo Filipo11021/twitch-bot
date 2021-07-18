@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-module.exports = (client, channel, words, check, userMsg) => {
+module.exports = (client, channel, words, check, userMsg, tags) => {
    const weatherCommand = '!pogoda'
    
    if (check && words[0] === weatherCommand) {
@@ -34,8 +34,13 @@ module.exports = (client, channel, words, check, userMsg) => {
                currentIcon = '🌫️'
             }
             //
-
-            client.say(channel, `${data.name}: ${Math.round(data.main.temp)} °C  ${currentIcon}`)
+            const filterCities = 'Nigeria' === data.name || 'Murzynowo' === data.name || 'Kutas' === data.name
+            if (filterCities) {
+               client.say(channel, `/timeout ${tags.username} 1`)
+            } else{
+               client.say(channel, `${data.name}: ${Math.round(data.main.temp)} °C  ${currentIcon}`)
+            }
+            
        
           }
          }).catch((err) => {
