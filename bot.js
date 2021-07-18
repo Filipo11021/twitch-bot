@@ -1,6 +1,5 @@
 require('dotenv').config();
 const tmi = require('tmi.js');
-const fetch = require('node-fetch');
 const Currency = require('./Currency')
 const Weather = require('./Weather')
 const Actions = require('./UsersAction')
@@ -37,7 +36,7 @@ client.on('message', (channel, tags, message, self) => {
    if (self) return;
    
    const userMsg = message.toLowerCase()
-   const check = /^[a-zA-Z\s\!\_\ś\ó\ż\ł\ć\ą\ę\ń\/]*$/i.test(userMsg)
+   const check = /^[0-9a-zA-Z\s\!\_\ś\ó\ż\ł\ć\ą\ę\ń\/\ź]*$/i.test(userMsg)
 
    const isMod = tags.mod || tags['user-type'] === 'mod'
    const isAdmin = botAdmin === tags.username
@@ -60,7 +59,7 @@ client.on('message', (channel, tags, message, self) => {
 
 
    //!pogoda city
-   Weather(client, channel, words, check, userMsg)
+   Weather(client, channel, words, check, userMsg, tags)
    
    
 
